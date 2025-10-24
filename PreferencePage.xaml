@@ -41,21 +41,21 @@
                       VerticalTextAlignment="Center" VerticalOptions="Start"/>
 
                             <Label x:Name="lbl_state" Text="Select State" TextColor="Navy" Padding="5"  HorizontalOptions="Start"  VerticalTextAlignment="Start" FontSize="Default" FontAttributes="Bold" />
-                            <Picker x:Name="Picker_State" SelectedIndexChanged="Picker_State_SelectedIndexChanged" ios:Picker.UpdateMode="WhenFinished" />
+                            <Picker x:Name="Picker_State" TextColor="Black" TitleColor="Black" SelectedIndexChanged="Picker_State_SelectedIndexChanged" ios:Picker.UpdateMode="WhenFinished" />
 
                             <StackLayout  x:Name="Districtlayout" Orientation="Vertical" IsVisible="False">
                                 <Label x:Name="lbl_district" Text="Select District" TextColor="Navy" Padding="5"  HorizontalOptions="Start" VerticalTextAlignment="Start" FontSize="Default" FontAttributes="Bold"/>
-                                <Picker x:Name="Picker_District" SelectedIndexChanged="Picker_District_SelectedIndexChanged" ios:Picker.UpdateMode="WhenFinished"  />
+                                <Picker x:Name="Picker_District" TextColor="Black" TitleColor="Black" SelectedIndexChanged="Picker_District_SelectedIndexChanged" ios:Picker.UpdateMode="WhenFinished"  />
                             </StackLayout>
 
                             <StackLayout  x:Name="Studiolayout" Orientation="Vertical" IsVisible="False">
                                 <Label  x:Name="lbl_studio" Text="Select Studio" TextColor="Navy" Padding="5"  HorizontalOptions="Start"  VerticalTextAlignment="Start" FontSize="Default" FontAttributes="Bold"/>
-                                <Picker x:Name="Picker_Studio"  SelectedIndexChanged="Picker_Studio_SelectedIndexChanged" ios:Picker.UpdateMode="WhenFinished" />
+                                <Picker x:Name="Picker_Studio" TextColor="Black" TitleColor="Black" SelectedIndexChanged="Picker_Studio_SelectedIndexChanged" ios:Picker.UpdateMode="WhenFinished" />
                             </StackLayout>
 
                             <StackLayout  x:Name="languagelayout" Orientation="Vertical" IsVisible="true">
                                 <Label x:Name="lbl_language" Text="Select Language" TextColor="Navy" Padding="5"  HorizontalOptions="Start"  VerticalTextAlignment="Start" FontSize="Default" FontAttributes="Bold"/>
-                                <Picker Title="Select Language" x:Name="Picker_language"  SelectedIndexChanged="Picker_language_SelectedIndexChanged" >
+                                <Picker Title="Select Language" x:Name="Picker_language" TextColor="Black" TitleColor="Black" SelectedIndexChanged="Picker_language_SelectedIndexChanged" >
 
                                     <!--<Picker.ItemsSource>
                                 <x:Array  Type="{x:Type x:String}">
