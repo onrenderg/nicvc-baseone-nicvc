@@ -231,9 +231,8 @@ namespace NICVC.ReserveNic
                 alertableDatabase.AddAlertable(item);
 
                 await DisplayAlert(App.GetLabelByKey("NICVC"), App.GetLabelByKey("alertsave"), App.GetLabelByKey("close"));
-                //await Navigation.PushAsync(new ViewSavedAlertsPage());
                 App.CurrentTabpageIndex = 0;
-                Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                await Navigation.PopToRootAsync();
 
             }
         }

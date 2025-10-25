@@ -396,12 +396,12 @@ namespace NICVC
                             statusMessage = parsed["Feedback"]["message"].ToString();
                             status = parsed["Feedback"]["status"].ToString();
 
+                            Loading_activity.IsVisible = false;
                             await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("NICVC"), statusMessage, App.GetLabelByKey("close"));
                             App.CurrentTabpageIndex = 2;
-                            await MainThread.InvokeOnMainThreadAsync(() =>
-                            {
-                                Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
-                            });
+                            
+                            // Navigate back to tabbed page instead of replacing MainPage
+                            await Navigation.PopToRootAsync();
                         }
                     }
                 }

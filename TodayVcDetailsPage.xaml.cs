@@ -214,7 +214,7 @@ namespace NICVC
                 alertableDatabase.AddAlertable(item);
 
                 await DisplayAlert(App.GetLabelByKey("NICVC"), App.GetLabelByKey("alertsave"), App.GetLabelByKey("close"));
-                Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                await Navigation.PopToRootAsync();
             }
         }
 

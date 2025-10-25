@@ -156,8 +156,8 @@ namespace NICVC
                 
                 await DisplayAlert(App.GetLabelByKey("NICVC"), App.GetLabelByKey("profilecreated"), App.GetLabelByKey("close"));
                 
-                // Reload the main page to reflect changes
-                Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                // Navigate back to tabbed page
+                await Navigation.PopAsync();
             }
         }
 

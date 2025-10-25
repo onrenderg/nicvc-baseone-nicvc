@@ -337,7 +337,7 @@ namespace NICVC
                     App.Language = Picker_language.SelectedIndex;
                     App.MyLanguage = languageMasterDatabase.GetLanguageMaster($"select ResourceKey, (case when ({App.Language} = 0) then ResourceValue else LocalResourceValue end)ResourceValue from  LanguageMaster").ToList();
                     App.SavedUserPreferList = saveUserPreferencesDatabase.GetSaveUserPreferences("select * from SaveUserPreferences").ToList();
-                    Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                    await Navigation.PopToRootAsync();
 
                 }
             }
