@@ -50,7 +50,7 @@
               RowSpacing="5">
             <Label x:Name="lbl_vcstatus" 
                    Text="Select VC Status" 
-                   TextColor="Navy" 
+
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Start" 
                    FontAttributes="Bold" 
@@ -67,7 +67,7 @@
             
             <Label x:Name="lbl_startingtime" 
                    Text="Select Starting Time" 
-                   TextColor="Navy" 
+
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Start" 
                    FontAttributes="Bold" 
