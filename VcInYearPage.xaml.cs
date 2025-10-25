@@ -21,7 +21,6 @@ namespace NICVC
         string districtname, studioname;
         YearWiseVcDatabase yearWiseVcDatabase;
         List<YearWiseVc> yearWiseVclist;
-        private bool isRowEven;
         public VcInYearPage()
         {
             InitializeComponent();
@@ -144,22 +143,6 @@ namespace NICVC
             }
         }
 
-        private void ViewCell_Appearing(object sender, EventArgs e)
-        {
-            var viewCell = (ViewCell)sender;
-            if (viewCell.View != null && viewCell.View.BackgroundColor == default(Color))
-            {
-                if (isRowEven)
-                {
-                    viewCell.View.BackgroundColor = Color.FromArgb("#FFFFFF");
-                }
-                else
-                {
-                    viewCell.View.BackgroundColor = Color.FromArgb("#FCF2F0");
-                }
-            }
-            isRowEven = !isRowEven;
-        }
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopToRootAsync();
