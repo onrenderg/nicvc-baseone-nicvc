@@ -33,15 +33,15 @@
         <Frame Grid.Row="0" CornerRadius="20" BorderColor="Navy" HorizontalOptions="Fill" Margin="5" BackgroundColor="AliceBlue" Padding="10">               
             <Label x:Name="Lbl_UserDetails" 
                    BackgroundColor="Transparent" 
-                   TextColor="Black" 
+                   TextColor="Navy" 
                    FontSize="16" 
                    FontAttributes="Bold" 
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
         </Frame>
         
-        <Frame Grid.Row="1" CornerRadius="20" BorderColor="Navy" HorizontalOptions="Fill" Margin="5" BackgroundColor="AliceBlue" Padding="10">               
-            <HorizontalStackLayout HorizontalOptions="Fill">
+        <Frame Grid.Row="1" CornerRadius="20" BorderColor="Navy" HorizontalOptions="Fill" Margin="5" BackgroundColor="AliceBlue" Padding="15,10" MinimumHeightRequest="50">               
+            <HorizontalStackLayout HorizontalOptions="Center"  Spacing="10">
                 <HorizontalStackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="refresh_tapped" NumberOfTapsRequired="1"/>
                 </HorizontalStackLayout.GestureRecognizers>
@@ -53,7 +53,7 @@
                        HorizontalTextAlignment="Center" 
                        HorizontalOptions="Fill" 
                        VerticalTextAlignment="Center"/>
-                <Image Source="ic_refresh.png" Aspect="AspectFit" HeightRequest="40" HorizontalOptions="End"/>
+                <Image Source="ic_refresh.png" Aspect="AspectFit" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
             </HorizontalStackLayout>            
         </Frame>
 

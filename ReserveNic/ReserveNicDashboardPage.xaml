@@ -8,12 +8,17 @@
               xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
               ios:Page.UseSafeArea="true" Title="Reserve" IconImageSource="ic_reservevideo">
     <NavigationPage.TitleView>
-        <StackLayout x:Name="Custom_Navigation" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <Image Source="ic_launcher.png" HeightRequest="40" VerticalOptions="CenterAndExpand"/>
-            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
-                <Label x:Name="Lbl_Header1" Text="NIC Video Conferencing" Style="{StaticResource NavigationLabelColor}" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            </StackLayout>
-        </StackLayout>
+        <HorizontalStackLayout x:Name="Custom_Navigation" HorizontalOptions="Fill" VerticalOptions="Center" Spacing="10">
+            <Image Source="ic_launcher.png" HeightRequest="40" VerticalOptions="Center"/>
+            <Label x:Name="Lbl_Header1" 
+                   Text="NIC Video Conferencing" 
+                   Style="{StaticResource NavigationLabelColor}" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
     </NavigationPage.TitleView>
     
     <Grid>
@@ -24,17 +29,25 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <Frame Grid.Row="0" CornerRadius="20" BorderColor="Navy" HorizontalOptions="FillAndExpand" Margin="5" BackgroundColor="AliceBlue">               
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">    
-                <Label x:Name="Lbl_UserDetails" BackgroundColor="Transparent" TextColor="Navy" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-            </StackLayout>            
+        <Frame Grid.Row="0" CornerRadius="20" BorderColor="Navy" HorizontalOptions="Fill" Margin="5" BackgroundColor="AliceBlue" Padding="10">               
+            <Label x:Name="Lbl_UserDetails" 
+                   BackgroundColor="Transparent" 
+                   TextColor="Navy" 
+                   FontSize="16" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center"/>
         </Frame>
         
-        <Frame Grid.Row="1" CornerRadius="20" BorderColor="Navy" HorizontalOptions="FillAndExpand" Margin="5" BackgroundColor="AliceBlue">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label x:Name="Lbl_Header" BackgroundColor="Transparent" TextColor="Navy" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                <!--<Image Source="ic_refresh.png"  Aspect="AspectFit" HeightRequest="50" HorizontalOptions="End"/>-->
-            </StackLayout>
+        <Frame Grid.Row="1" CornerRadius="20" BorderColor="Navy" HorizontalOptions="Fill" Margin="5" BackgroundColor="AliceBlue" Padding="10">
+            <Label x:Name="Lbl_Header" 
+                   BackgroundColor="Transparent" 
+                   TextColor="Navy" 
+                   FontSize="16" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center"/>
+            <!--<Image Source="ic_refresh.png" Aspect="AspectFit" HeightRequest="50" HorizontalOptions="End"/>-->
         </Frame>
       
         <Grid Grid.Row="2" Margin="10,0,10,0">
@@ -49,13 +62,12 @@
             </Grid.ColumnDefinitions>
 
             <Label x:Name="lbl_fromdate" Text="Select Date" TextColor="Navy" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" FontSize="16"/>
-            <DatePicker FontSize="16" FontAttributes="Bold" Format="dd-MM-yyyy" x:Name="DatePicker_startdate" HorizontalOptions="FillAndExpand" MinimumDate="{x:Static sys:DateTime.Now}" IsEnabled="True" DateSelected="DatePicker_startdate_DateSelected" Grid.Row="1" Grid.Column="1"/>
+            <DatePicker FontSize="16" FontAttributes="Bold" Format="dd-MM-yyyy" x:Name="DatePicker_startdate" HorizontalOptions="Fill" MinimumDate="{x:Static sys:DateTime.Now}" IsEnabled="True" DateSelected="DatePicker_startdate_DateSelected" Grid.Row="1" Grid.Column="1"/>
         </Grid>
         
         <ScrollView Grid.Row="3">
-            <Grid Margin="15,0,15,0" VerticalOptions="StartAndExpand">
-                <StackLayout>
-                    <Grid RowSpacing="5" ColumnSpacing="5">
+            <VerticalStackLayout Margin="15,0,15,0" Spacing="10">
+                <Grid RowSpacing="5" ColumnSpacing="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -65,49 +77,49 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         
-                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="0" BackgroundColor="AliceBlue" VerticalOptions="StartAndExpand" Margin="5">
-                            <StackLayout x:Name="TodayVcLayout" Spacing="5" Padding="10" VerticalOptions="CenterAndExpand">
-                                <StackLayout.GestureRecognizers>
+                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="0" BackgroundColor="AliceBlue" VerticalOptions="Start" Margin="5">
+                            <VerticalStackLayout x:Name="TodayVcLayout" Spacing="5" Padding="10" VerticalOptions="Center">
+                                <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="multistate_Tapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
+                                </VerticalStackLayout.GestureRecognizers>
                                 <Image Source="ic_multipointstate" HeightRequest="50" HorizontalOptions="Center"/>
                                 <Label x:Name="Lbl_multipointbystate" Text="Multipoint Managed By State" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="Navy" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
-                            </StackLayout>
+                            </VerticalStackLayout>
                         </Frame>
 
-                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="1" BackgroundColor="#f2f2ff" VerticalOptions="StartAndExpand" Margin="5">
-                            <StackLayout Spacing="5" Padding="10" VerticalOptions="CenterAndExpand">
-                                <StackLayout.GestureRecognizers>
+                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="1" BackgroundColor="#f2f2ff" VerticalOptions="Start" Margin="5">
+                            <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Center">
+                                <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="multinichq_Tapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
+                                </VerticalStackLayout.GestureRecognizers>
                                 <Image Source="ic_multipointnic" HeightRequest="50" HorizontalOptions="Center"/>
                                 <Label x:Name="Lbl_multipointbynic" Text="Multipoint Managed By NIC" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="Navy" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
-                            </StackLayout>
+                            </VerticalStackLayout>
                         </Frame>
 
-                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="1" Grid.Column="0" BackgroundColor="GhostWhite" VerticalOptions="StartAndExpand" Margin="5">
-                            <StackLayout Spacing="5" Padding="10" VerticalOptions="CenterAndExpand">
-                                <StackLayout.GestureRecognizers>
+                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="1" Grid.Column="0" BackgroundColor="GhostWhite" VerticalOptions="Start" Margin="5">
+                            <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Center">
+                                <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="pointopoint_Tapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
+                                </VerticalStackLayout.GestureRecognizers>
                                 <Image Source="ic_ptpicon.png" HeightRequest="50" HorizontalOptions="Center"/>
                                 <Label x:Name="Lbl_pointopoint" Text="Point To Point" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="Navy" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
-                            </StackLayout>
+                            </VerticalStackLayout>
                         </Frame>
 
-                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="1" Grid.Column="1" BackgroundColor="#fff2fe" VerticalOptions="StartAndExpand" Margin="5">
-                            <StackLayout Spacing="5" Padding="10" VerticalOptions="CenterAndExpand">
-                                <StackLayout.GestureRecognizers>
+                        <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="1" Grid.Column="1" BackgroundColor="#fff2fe" VerticalOptions="Start" Margin="5">
+                            <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Center">
+                                <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="cicvc_Tapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
+                                </VerticalStackLayout.GestureRecognizers>
                                 <Image Source="ic_cicicon.png" HeightRequest="50" HorizontalOptions="Center"/>
                                 <Label x:Name="Lbl_cic" Text="CIC" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="Navy" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
-                            </StackLayout>
+                            </VerticalStackLayout>
                         </Frame>
                     </Grid>
 
-                    <StackLayout Margin="0,10,0,0">
-                        <Frame CornerRadius="20" BorderColor="Navy" BackgroundColor="AliceBlue" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="5">
+                    <!-- Ongoing Conference Section -->
+                    <Frame CornerRadius="20" BorderColor="Navy" BackgroundColor="AliceBlue" VerticalOptions="Start" HorizontalOptions="Fill" Margin="5,10,5,5" Padding="0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -127,39 +139,50 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             
-                            <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="0" BackgroundColor="AliceBlue" VerticalOptions="StartAndExpand" Margin="5">
-                                <StackLayout Spacing="5" Padding="12" VerticalOptions="CenterAndExpand">
-                                    <StackLayout.GestureRecognizers>
+                            <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="0" BackgroundColor="AliceBlue" VerticalOptions="Start" Margin="5" Padding="12">
+                                <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                                    <VerticalStackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ongoingvc_Tapped" NumberOfTapsRequired="1"/>
-                                    </StackLayout.GestureRecognizers>
+                                    </VerticalStackLayout.GestureRecognizers>
                                     <Label x:Name="Lbl_Ongoing" Text="Ongoing - 2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="Navy" LineBreakMode="WordWrap"/>
-                                </StackLayout>
+                                </VerticalStackLayout>
                             </Frame>
                             
-                            <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="1" BackgroundColor="#f2fffb" VerticalOptions="StartAndExpand" Margin="5">
-                                <StackLayout Spacing="5" Padding="12" VerticalOptions="CenterAndExpand">
-                                    <StackLayout.GestureRecognizers>
+                            <Frame CornerRadius="20" BorderColor="Navy" Grid.Row="0" Grid.Column="1" BackgroundColor="#f2fffb" VerticalOptions="Start" Margin="5" Padding="12">
+                                <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                                    <VerticalStackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="importantvc_Tapped" NumberOfTapsRequired="1"/>
-                                    </StackLayout.GestureRecognizers>
+                                    </VerticalStackLayout.GestureRecognizers>
                                     <Label x:Name="Lbl_Important" Text="Important Vc's - 0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="Navy" LineBreakMode="WordWrap"/>
-                                </StackLayout>
+                                </VerticalStackLayout>
                             </Frame>
                         </Grid>
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+
+            </VerticalStackLayout>
         </ScrollView>
 
-        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" Grid.RowSpan="999">
-            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <Frame BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center" Padding="20" CornerRadius="10">
-                    <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
-                        <ActivityIndicator IsVisible="true" IsRunning="true" Color="Navy"/>
-                        <Label x:Name="Lbl_PleaseWait" Text="Please Wait ..." TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalOptions="Center"/>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
-        </ContentView>
+        <!-- Loading Overlay -->
+        <Grid Grid.Row="0" 
+              Grid.RowSpan="4"
+              x:Name="Loading_activity" 
+              BackgroundColor="#C0808080" 
+              IsVisible="false"
+              Padding="20">
+            <Frame BackgroundColor="White" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" 
+                   Padding="20" 
+                   CornerRadius="10">
+                <HorizontalStackLayout Spacing="15">
+                    <ActivityIndicator IsVisible="true" IsRunning="true" Color="Navy"/>
+                    <Label x:Name="Lbl_PleaseWait" 
+                           Text="Please Wait ..." 
+                           TextColor="Black" 
+                           FontAttributes="Bold" 
+                           VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </Grid>
     </Grid>
 
 </ContentPage>
