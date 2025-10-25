@@ -45,81 +45,83 @@
         <!-- Filters -->
         <Grid Grid.Row="2" 
               Margin="5" 
-              RowDefinitions="Auto,Auto,Auto" 
+              RowDefinitions="Auto,Auto" 
               ColumnDefinitions="40*,60*" 
               RowSpacing="5">
-            
             <Label x:Name="lbl_vcstatus" 
                    Text="Select VC Status" 
- 
+                   TextColor="Navy" 
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Start" 
                    FontAttributes="Bold" 
-                   Grid.Row="1" 
+                   Grid.Row="0" 
                    Grid.Column="0"/>
             <Picker x:Name="picker_vcstatus" 
                     Title="Select VC Status" 
                     HorizontalOptions="Fill" 
                     TextColor="Maroon" 
-                    Grid.Row="1" 
+                    Grid.Row="0" 
                     Grid.Column="1" 
                     SelectedIndexChanged="picker_vcstatus_SelectedIndexChanged" 
                     ios:Picker.UpdateMode="WhenFinished"/>
             
             <Label x:Name="lbl_startingtime" 
                    Text="Select Starting Time" 
-
+                   TextColor="Navy" 
                    VerticalTextAlignment="Center" 
                    HorizontalTextAlignment="Start" 
                    FontAttributes="Bold" 
-                   Grid.Row="2" 
+                   Grid.Row="1" 
                    Grid.Column="0"/>
             <Picker x:Name="picker_sort" 
                     Title="Select Starting Time" 
                     TextColor="Maroon" 
                     HorizontalOptions="Fill" 
-                    Grid.Row="2" 
+                    Grid.Row="1" 
                     Grid.Column="1" 
                     SelectedIndexChanged="picker_sort_SelectedIndexChanged" 
                     ios:Picker.UpdateMode="WhenFinished"/>
         </Grid>
 
-        <CollectionView x:Name="listView_multipointvc" 
-                        Grid.Row="3"
-                        SelectionMode="None">
-            <CollectionView.ItemTemplate>
+        <ListView x:Name="listView_multipointvc" 
+                  Grid.Row="3"
+                  HasUnevenRows="True" 
+                  SeparatorColor="#126b8a" 
+                  ItemTapped="listView_multipointvc_ItemTapped" 
+                  SelectionMode="None">
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Margin="5" 
-                            BackgroundColor="White" 
-                            Stroke="Navy" 
-                            StrokeThickness="2"
-                            StrokeShape="RoundRectangle 20">
-                        <Grid Padding="10" ColumnDefinitions="5*,4*,1*">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="listView_multipointvc_ItemTapped"/>
-                            </Grid.GestureRecognizers>
-                            <Label Text="{Binding labelname}" 
-                                   TextColor="Maroon" 
-                                   FontSize="Default" 
-                                   Grid.Column="0" 
-                                   VerticalTextAlignment="Center"
-                                   FontAttributes="Bold"/>
-                            <Label Text="{Binding NoOfVc}" 
-                                   TextColor="Navy" 
-                                   HorizontalTextAlignment="Center" 
-                                   FontSize="Default" 
-                                   Grid.Column="1" 
-                                   VerticalTextAlignment="Center"
-                                   FontAttributes="Bold"/>
-                            <Image Source="ic_vcforward" 
-                                   HeightRequest="35" 
-                                   Grid.Column="2"
-                                   VerticalOptions="Center"/>
-                        </Grid>
-                    </Border>
+                    <ViewCell>
+                        <Border Margin="5" 
+                                BackgroundColor="White" 
+                                Stroke="Navy" 
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 20" 
+                                Padding="10">
+                            <Grid ColumnDefinitions="5*,4*,1*">
+                                <Label Text="{Binding labelname}" 
+                                       TextColor="Maroon" 
+                                       FontSize="Default" 
+                                       Grid.Column="0" 
+                                       FontAttributes="Bold" 
+                                       VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding NoOfVc}" 
+                                       TextColor="Navy" 
+                                       HorizontalTextAlignment="Center" 
+                                       FontSize="Default" 
+                                       Grid.Column="1" 
+                                       FontAttributes="Bold" 
+                                       VerticalTextAlignment="Center"/>
+                                <Image Source="ic_vcforward" 
+                                       HeightRequest="35" 
+                                       Grid.Column="2" 
+                                       VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
+                    </ViewCell>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <!-- Loading Overlay -->
         <Grid Grid.Row="0" 
@@ -145,4 +147,5 @@
             </Border>
         </Grid>
     </Grid>
+
 </ContentPage>
