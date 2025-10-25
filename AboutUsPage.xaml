@@ -81,7 +81,7 @@
                             <Label x:Name="lbl_personlainfo" Text="Update personal Info." TextColor="Black" HorizontalOptions="FillAndExpand" FontSize="16" />
                         </StackLayout>
 
-                        <StackLayout x:Name="stack_deleteprofile" Orientation="Horizontal" Margin="5,0,0,0">
+                        <StackLayout x:Name="stack_deleteprofile" Orientation="Horizontal" Margin="5,0,0,0" IsVisible="False">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer
                                     Tapped="DeleteProfile_tapped"

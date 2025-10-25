@@ -171,11 +171,22 @@ namespace NICVC
 
         }
 
-        private void btn_cancel_Clicked(object sender, EventArgs e)
+        private async void btn_cancel_Clicked(object sender, EventArgs e)
         {
-            // Just switch to the dashboard tab without recreating the TabbedPage
-            var tabbedPage = (TabbedPage)Parent;
-            tabbedPage.CurrentPage = tabbedPage.Children[0]; // Switch to dashboard (index 0)
+            // Check if this page is in a navigation stack
+            if (Navigation != null && Navigation.NavigationStack.Count > 1)
+            {
+                // Page was navigated to, so pop it
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                // Page is part of a TabbedPage, switch to dashboard tab
+                if (Parent is TabbedPage tabbedPage)
+                {
+                    tabbedPage.CurrentPage = tabbedPage.Children[0]; // Switch to dashboard (index 0)
+                }
+            }
         }
 
         async Task<bool> checkvalidation()

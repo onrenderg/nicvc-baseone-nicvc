@@ -33,9 +33,8 @@ namespace NICVC
             PersonalInfoDatabase personalInfoDatabase = new PersonalInfoDatabase();
             List<PersonalInfo> personalInfolist = personalInfoDatabase.GetPersonalInfo("Select * from personalinfo").ToList();
 
-            // Always show both profile and delete profile options
-            stack_personlainfo.IsVisible = true;
-            stack_deleteprofile.IsVisible = true;
+            // Always show profile option, hide delete profile option
+            // stack_personlainfo.IsVisible = true;
             
             if (personalInfolist.Any())
             {
