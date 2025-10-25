@@ -116,7 +116,7 @@
                            VerticalTextAlignment="Center"/>
                 </HorizontalStackLayout>
 
-                <HorizontalStackLayout x:Name="stack_deleteprofile" Margin="5,0,0,0" Spacing="10" IsVisible="True">
+                <HorizontalStackLayout x:Name="stack_deleteprofile" Margin="5,0,0,0" Spacing="10" IsVisible="False">
                     <HorizontalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DeleteProfile_tapped" NumberOfTapsRequired="1" />
                     </HorizontalStackLayout.GestureRecognizers>
