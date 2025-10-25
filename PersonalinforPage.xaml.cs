@@ -156,8 +156,22 @@ namespace NICVC
                 
                 await DisplayAlert(App.GetLabelByKey("NICVC"), App.GetLabelByKey("profilecreated"), App.GetLabelByKey("close"));
                 
-                // Navigate back to tabbed page
-                await Navigation.PopAsync();
+                // Recreate the TabbedPage to rebuild tabs with FeedbackPage
+                App.CurrentTabpageIndex = 2; // Set to Feedback tab (index 2)
+                
+                // Recreate MainPage with proper NavigationPage styling (matching App.xaml.cs)
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                }
+                else
+                {
+                    Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage())
+                    {
+                        BarBackgroundColor = Color.FromArgb("#2196f3"),
+                        BarTextColor = Colors.WhiteSmoke
+                    };
+                }
             }
         }
 
