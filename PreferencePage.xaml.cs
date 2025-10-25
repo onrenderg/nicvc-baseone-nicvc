@@ -337,7 +337,21 @@ namespace NICVC
                     App.Language = Picker_language.SelectedIndex;
                     App.MyLanguage = languageMasterDatabase.GetLanguageMaster($"select ResourceKey, (case when ({App.Language} = 0) then ResourceValue else LocalResourceValue end)ResourceValue from  LanguageMaster").ToList();
                     App.SavedUserPreferList = saveUserPreferencesDatabase.GetSaveUserPreferences("select * from SaveUserPreferences").ToList();
-                    await Navigation.PopToRootAsync();
+                    
+                    // Recreate MainPage with TabbedPage to properly initialize the app
+                    App.CurrentTabpageIndex = 0; // Set to Dashboard tab
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    {
+                        Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                    }
+                    else
+                    {
+                        Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage())
+                        {
+                            BarBackgroundColor = Color.FromArgb("#2196f3"),
+                            BarTextColor = Colors.WhiteSmoke
+                        };
+                    }
 
                 }
             }
