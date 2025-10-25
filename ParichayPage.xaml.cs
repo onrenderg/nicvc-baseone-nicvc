@@ -63,7 +63,18 @@ namespace NICVC
             {                
                 if (e.Url.StartsWith("https://parichay.nic.in/Accounts/Services?service="))
                 {
-                    App.Current.MainPage = new NavigationPage(new ParichayPage());
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    {
+                        App.Current.MainPage = new NavigationPage(new ParichayPage());
+                    }
+                    else
+                    {
+                        App.Current.MainPage = new NavigationPage(new ParichayPage())
+                        {
+                            BarBackgroundColor = Color.FromArgb("#2196f3"),
+                            BarTextColor = Colors.WhiteSmoke
+                        };
+                    }
                 }
             }
             
@@ -109,7 +120,18 @@ namespace NICVC
                     } else
                     {
                         await DisplayAlert("Exception", ((int)response.StatusCode).ToString(), "Close");
-                        Application.Current.MainPage = new NavigationPage(new ParichayPage());
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
+                        {
+                            Application.Current.MainPage = new NavigationPage(new ParichayPage());
+                        }
+                        else
+                        {
+                            Application.Current.MainPage = new NavigationPage(new ParichayPage())
+                            {
+                                BarBackgroundColor = Color.FromArgb("#2196f3"),
+                                BarTextColor = Colors.WhiteSmoke
+                            };
+                        }
                         return -1;
                     }
                     

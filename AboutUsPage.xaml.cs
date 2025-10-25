@@ -153,7 +153,18 @@ namespace NICVC
                     await DisplayAlert("Success", "Profile deleted successfully.", "OK");
                     
                     // Force complete app refresh to properly reinitialize everything
-                    Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"));
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    {
+                        Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"));
+                    }
+                    else
+                    {
+                        Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"))
+                        {
+                            BarBackgroundColor = Color.FromArgb("#2196f3"),
+                            BarTextColor = Colors.WhiteSmoke
+                        };
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -209,7 +220,18 @@ namespace NICVC
                 await Auth_Revoke();
                 
                 // Reset to login page
-                Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"));
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"));
+                }
+                else
+                {
+                    Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"))
+                    {
+                        BarBackgroundColor = Color.FromArgb("#2196f3"),
+                        BarTextColor = Colors.WhiteSmoke
+                    };
+                }
             }
 
         }
