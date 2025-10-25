@@ -110,10 +110,17 @@ namespace NICVC
                 lbl_user_header1.Text = statename;
             }
         }
-        private void listView_schedulevc_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void listView_schedulevc_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var currentRecord = e.Item as CurrentMonthVc;
+            if (e.CurrentSelection.Count == 0)
+                return;
+                
+            var currentRecord = e.CurrentSelection[0] as CurrentMonthVc;
             App.vcdateschedulevc = currentRecord.DateofVC.ToString();
+            
+            // Clear selection
+            ((CollectionView)sender).SelectedItem = null;
+            
             Navigation.PushAsync(new CurrentMonthVcDetailsPage());
         }
 
