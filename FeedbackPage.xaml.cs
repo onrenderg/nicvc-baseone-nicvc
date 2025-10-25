@@ -398,7 +398,10 @@ namespace NICVC
 
                             await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("NICVC"), statusMessage, App.GetLabelByKey("close"));
                             App.CurrentTabpageIndex = 2;
-                            Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                            await MainThread.InvokeOnMainThreadAsync(() =>
+                            {
+                                Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+                            });
                         }
                     }
                 }
