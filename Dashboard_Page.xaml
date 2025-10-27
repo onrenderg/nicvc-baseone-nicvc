@@ -177,7 +177,7 @@
                x:Name="Lbl_LastUpdate" 
                Text="Last Update" 
                Padding="10" 
-               Margin="0,5,0,10"
+               Margin="0,5,0,60"
                TextColor="Navy" 
                HorizontalTextAlignment="Center" 
                FontAttributes="Bold" 

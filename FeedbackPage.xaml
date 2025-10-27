@@ -127,7 +127,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <Button Grid.Row="4" x:Name="btn_save" Text="Submit" BackgroundColor="White" TextColor="Navy" FontSize="18" FontAttributes="Bold" BorderColor="Navy" BorderWidth="1" CornerRadius="10" Margin="10" Clicked="btn_save_Clicked" Padding="15,10"/>
+        <Button Grid.Row="4" x:Name="btn_save" Text="Submit" BackgroundColor="White" TextColor="Navy" FontSize="18" FontAttributes="Bold" BorderColor="Navy" BorderWidth="1" CornerRadius="10" Margin="10,10,10,60" Clicked="btn_save_Clicked" Padding="15,10"/>
 
         <!-- Loading Overlay -->
         <Grid Grid.Row="0" 

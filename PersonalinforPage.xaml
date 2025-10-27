@@ -76,7 +76,7 @@
             </Grid>
         </ScrollView>
 
-        <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center" Spacing="10" Margin="5">
+        <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center" Spacing="10" Margin="5,5,5,60">
             <Button x:Name="btn_cancel" Text="Cancel" BackgroundColor="White" TextColor="Navy" FontSize="18" FontAttributes="Bold" BorderColor="Navy" BorderWidth="1" CornerRadius="10" Clicked="btn_cancel_Clicked" Padding="30,10"/>
             <Button IsVisible="false" x:Name="btn_save" Text="Save" BackgroundColor="White" TextColor="Navy" FontSize="18" FontAttributes="Bold" BorderColor="Navy" BorderWidth="1" CornerRadius="10" Clicked="btn_save_Clicked" Padding="30,10"/>
             <Button IsVisible="false" x:Name="btn_update" Text="Update" BackgroundColor="White" TextColor="Navy" FontSize="18" FontAttributes="Bold" BorderColor="Navy" BorderWidth="1" CornerRadius="10" Clicked="btn_update_Clicked" Padding="30,10"/>

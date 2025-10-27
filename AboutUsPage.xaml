@@ -144,7 +144,8 @@
                        Source="ic_niclogo" 
                        HorizontalOptions="Center" 
                        WidthRequest="150" 
-                       HeightRequest="100"/>
+                       HeightRequest="100"
+                       Margin="0,0,0,60"/>
             </VerticalStackLayout>
         </ScrollView>
         <!-- Logout Help Overlay -->
