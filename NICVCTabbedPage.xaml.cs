@@ -1,5 +1,3 @@
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 using NICVC.Model;
 
 namespace NICVC
@@ -10,10 +8,10 @@ namespace NICVC
         public NICVCTabbedPage()
         {
             InitializeComponent();
-            Lbl_Header.Text = App.GetLabelByKey("nicvdconf");        
-
-            On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            Lbl_Header.Text = App.GetLabelByKey("nicvdconf");
             
+            // On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+
             Children.Add(new Dashboard_Page());
             Children.Add(new ReserveNicDashboardPage());
             
