@@ -43,6 +43,12 @@
 		<AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidLinkTool>r8</AndroidLinkTool>
+	  <DebugSymbols>True</DebugSymbols>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<!-- <MauiIcon Include="Resources\AppIcon\appicon_custom.png"  /> -->

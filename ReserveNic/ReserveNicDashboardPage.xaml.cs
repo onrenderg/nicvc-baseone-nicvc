@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -296,12 +296,12 @@ namespace NICVC
         
         }
 
-        private void importantvc_Tapped(object sender, EventArgs e)
+        private async void importantvc_Tapped(object sender, EventArgs e)
         {          
 
             if (ImportantVCCount != 0)
             {
-                Navigation.PushAsync(new ImportantVcPage());
+                await Navigation.PushAsync(new ImportantVcPage());
             }
         }
 
