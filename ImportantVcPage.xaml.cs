@@ -10,7 +10,7 @@ namespace NICVC
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ImportantVcPage : ContentPage
     {
-        ImportantVcDatabase importantVcDatabase;
+        TodayVcDatabase todayVcDatabase;
         List<SaveUserPreferences> SavedUserPreferList;
         SaveUserPreferencesDatabase saveUserPreferencesDatabase;
         string districtname, studioname;
@@ -18,7 +18,7 @@ namespace NICVC
         public ImportantVcPage()
         {
             InitializeComponent();
-            importantVcDatabase = new ImportantVcDatabase();
+            todayVcDatabase = new TodayVcDatabase();
 
             lbl_user_header.Text = App.GetLabelByKey("ImportantVc");      
             Lbl_Header.Text = App.GetLabelByKey("nicvdconf");
@@ -59,10 +59,10 @@ namespace NICVC
                 lbl_user_header1.Text = statename;
             }
 
-            List<ImportantVc> importantVclist;
+            List<TodayVc> importantVclist;
             //string query = $"SELECT Startingtime, DateofVC, count(*) as NoOfVc from TodayVc where Important='Y' and Startingtime !='All' and VCStatus = 'Confirmed'  group by substr(dateofvc,7)||substr(dateofvc,4,2)||substr(dateofvc,1,2)";
             string query = $"Select *,count(*) as NoOfVc from TodayVc where Startingtime <> 'All' and VCStatus = 'Confirmed' and Important='Y' group by time(Startingtime)";
-            importantVclist = importantVcDatabase.GetImportantVc(query).ToList();
+            importantVclist = todayVcDatabase.GetTodayVc(query).ToList();
             if (App.Language == 0)
             {
                 listView_ImportantVc.IsVisible = true;
@@ -82,12 +82,12 @@ namespace NICVC
         private void listView_ImportantVc_ItemTapped(object sender, EventArgs e)
         {
             var tappedEventArgs = e as TappedEventArgs;
-            var currentRecord = tappedEventArgs?.Parameter as ImportantVc;
+            var currentRecord = tappedEventArgs?.Parameter as TodayVc;
             if (currentRecord == null)
             {
                 // For CollectionView, get the binding context from the sender
                 var grid = sender as Microsoft.Maui.Controls.Grid;
-                currentRecord = grid?.BindingContext as ImportantVc;
+                currentRecord = grid?.BindingContext as TodayVc;
             }
             
             if (currentRecord != null)
