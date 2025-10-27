@@ -1,7 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NICVC.NICVCTabbedPage">
+             x:Class="NICVC.NICVCTabbedPage"
+             BarBackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+             BarTextColor="{AppThemeBinding Light=#2196f3, Dark=#2196f3}">
     <NavigationPage.TitleView  >
         <StackLayout x:Name="Custom_Navigation" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
 

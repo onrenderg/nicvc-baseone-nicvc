@@ -14,9 +14,6 @@ namespace NICVC
 
             On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             
-            // Set opaque background for bottom tab bar to prevent content overlap
-            BarBackgroundColor = Color.FromArgb("#FFFFFF");
-            BarTextColor = Color.FromArgb("#2196f3");
             Children.Add(new Dashboard_Page());
             Children.Add(new ReserveNicDashboardPage());
             
