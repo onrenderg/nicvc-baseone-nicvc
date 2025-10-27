@@ -340,17 +340,20 @@ namespace NICVC
                     
                     // Recreate MainPage with TabbedPage to properly initialize the app
                     App.CurrentTabpageIndex = 0; // Set to Dashboard tab
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    if (Application.Current.Windows.Count > 0)
                     {
-                        Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
-                    }
-                    else
-                    {
-                        Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage())
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
-                            BarBackgroundColor = Color.FromArgb("#2196f3"),
-                            BarTextColor = Colors.WhiteSmoke
-                        };
+                            Application.Current.Windows[0].Page = new NavigationPage(new NICVCTabbedPage());
+                        }
+                        else
+                        {
+                            Application.Current.Windows[0].Page = new NavigationPage(new NICVCTabbedPage())
+                            {
+                                BarBackgroundColor = Color.FromArgb("#2196f3"),
+                                BarTextColor = Colors.WhiteSmoke
+                            };
+                        }
                     }
 
                 }
@@ -416,17 +419,20 @@ namespace NICVC
                     }
                     App.StateMasterList = stateMasterDatabase.GetStateMaster("select * from StateMaster order by StateName").ToList();
                     Loading_activity.IsVisible = false;
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    if (Application.Current.Windows.Count > 0)
                     {
-                        Application.Current.MainPage = new NavigationPage(new PreferencePage());
-                    }
-                    else
-                    {
-                        Application.Current.MainPage = new NavigationPage(new PreferencePage())
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
-                            BarBackgroundColor = Color.FromArgb("#2196f3"),
-                            BarTextColor = Colors.WhiteSmoke
-                        };
+                            Application.Current.Windows[0].Page = new NavigationPage(new PreferencePage());
+                        }
+                        else
+                        {
+                            Application.Current.Windows[0].Page = new NavigationPage(new PreferencePage())
+                            {
+                                BarBackgroundColor = Color.FromArgb("#2196f3"),
+                                BarTextColor = Colors.WhiteSmoke
+                            };
+                        }
                     }
                     
                 }

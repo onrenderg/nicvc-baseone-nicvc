@@ -121,55 +121,38 @@ namespace NICVC
                 Language = 0;//1 for english
             }
             MyLanguage = languageMasterDatabase.GetLanguageMaster($"select MultipleResourceKey,ResourceKey, (case when ({Language} = 0) then ResourceValue else LocalResourceValue end)ResourceValue from  LanguageMaster").ToList();
+        }
 
-            if (UserLoginValues.Count == 0)
+        protected override Window CreateWindow(IActivationState activationState)
+        {
+            Page rootPage;
+
+            // Determine which page to show based on login and preferences
+            if (UserLoginValues.Count == 0 || SavedUserPreferList.Count == 0)
             {
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    MainPage = new NavigationPage(new ParichayPage());
-                    return;
-                }
-                else
-                {
-                    MainPage = new NavigationPage(new ParichayPage())
-                    {
-                        BarBackgroundColor = Color.FromArgb("#2196f3"),
-                        BarTextColor = Colors.WhiteSmoke
-                    };
-                }
-            }
-            else if (SavedUserPreferList.Count == 0)
-            {
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    MainPage = new NavigationPage(new ParichayPage());
-                    return;
-                }
-                else
-                {
-                    MainPage = new NavigationPage(new ParichayPage())
-                    {
-                        BarBackgroundColor = Color.FromArgb("#2196f3"),
-                        BarTextColor = Colors.WhiteSmoke
-                    };
-                }
+                rootPage = new ParichayPage();
             }
             else
             {
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    MainPage = new NavigationPage(new NICVCTabbedPage());
-                    return;
-                }
-                else
-                {
-                    MainPage = new NavigationPage(new NICVCTabbedPage())
-                    {
-                        BarBackgroundColor = Color.FromArgb("#2196f3"),
-                        BarTextColor = Colors.WhiteSmoke
-                    };
-                }
+                rootPage = new NICVCTabbedPage();
             }
+
+            // Create NavigationPage with platform-specific styling
+            NavigationPage navigationPage;
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                navigationPage = new NavigationPage(rootPage);
+            }
+            else
+            {
+                navigationPage = new NavigationPage(rootPage)
+                {
+                    BarBackgroundColor = Color.FromArgb("#2196f3"),
+                    BarTextColor = Colors.WhiteSmoke
+                };
+            }
+
+            return new Window(navigationPage);
         }
 
         public static bool isAlphaNumeric(string strToCheck)
@@ -291,7 +274,10 @@ namespace NICVC
             {
                 System.Diagnostics.Debug.WriteLine($"Prefixed Error: {ey.Message}");
                 System.Diagnostics.Debug.WriteLine($"Prefixed Stack: {ey.StackTrace}");
-                Current.MainPage.DisplayAlert("NICVC", ey.Message + "Failed to Load Default Data. Please Uninstall and then Re-install the App again", "OK");
+                if (Current.Windows.Count > 0 && Current.Windows[0]?.Page != null)
+                {
+                    Current.Windows[0].Page.DisplayAlert("NICVC", ey.Message + "Failed to Load Default Data. Please Uninstall and then Re-install the App again", "OK");
+                }
             }
         }
 
@@ -311,17 +297,20 @@ namespace NICVC
         // Helper method to navigate to TabbedPage with consistent styling
         public static void NavigateToTabbedPage()
         {
-            if (DeviceInfo.Platform == DevicePlatform.iOS)
+            if (Current.Windows.Count > 0)
             {
-                Current.MainPage = new NavigationPage(new NICVCTabbedPage());
-            }
-            else
-            {
-                Current.MainPage = new NavigationPage(new NICVCTabbedPage())
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
-                    BarBackgroundColor = Color.FromArgb("#2196f3"),
-                    BarTextColor = Colors.WhiteSmoke
-                };
+                    Current.Windows[0].Page = new NavigationPage(new NICVCTabbedPage());
+                }
+                else
+                {
+                    Current.Windows[0].Page = new NavigationPage(new NICVCTabbedPage())
+                    {
+                        BarBackgroundColor = Color.FromArgb("#2196f3"),
+                        BarTextColor = Colors.WhiteSmoke
+                    };
+                }
             }
         }
 

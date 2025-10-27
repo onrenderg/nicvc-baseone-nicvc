@@ -89,7 +89,10 @@ namespace NICVC.ReserveNic
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             App.CurrentTabpageIndex = 1;
-            App.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
+            if (App.Current.Windows.Count > 0)
+            {
+                App.Current.Windows[0].Page = new NavigationPage(new NICVCTabbedPage());
+            }
         }
 
         private void picker_vcstatus_SelectedIndexChanged(object sender, EventArgs e)

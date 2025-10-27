@@ -63,17 +63,20 @@ namespace NICVC
             {                
                 if (e.Url.StartsWith("https://parichay.nic.in/Accounts/Services?service="))
                 {
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    if (App.Current.Windows.Count > 0)
                     {
-                        App.Current.MainPage = new NavigationPage(new ParichayPage());
-                    }
-                    else
-                    {
-                        App.Current.MainPage = new NavigationPage(new ParichayPage())
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
-                            BarBackgroundColor = Color.FromArgb("#2196f3"),
-                            BarTextColor = Colors.WhiteSmoke
-                        };
+                            App.Current.Windows[0].Page = new NavigationPage(new ParichayPage());
+                        }
+                        else
+                        {
+                            App.Current.Windows[0].Page = new NavigationPage(new ParichayPage())
+                            {
+                                BarBackgroundColor = Color.FromArgb("#2196f3"),
+                                BarTextColor = Colors.WhiteSmoke
+                            };
+                        }
                     }
                 }
             }
@@ -120,17 +123,20 @@ namespace NICVC
                     } else
                     {
                         await DisplayAlert("Exception", ((int)response.StatusCode).ToString(), "Close");
-                        if (DeviceInfo.Platform == DevicePlatform.iOS)
+                        if (Application.Current.Windows.Count > 0)
                         {
-                            Application.Current.MainPage = new NavigationPage(new ParichayPage());
-                        }
-                        else
-                        {
-                            Application.Current.MainPage = new NavigationPage(new ParichayPage())
+                            if (DeviceInfo.Platform == DevicePlatform.iOS)
                             {
-                                BarBackgroundColor = Color.FromArgb("#2196f3"),
-                                BarTextColor = Colors.WhiteSmoke
-                            };
+                                Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage());
+                            }
+                            else
+                            {
+                                Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage())
+                                {
+                                    BarBackgroundColor = Color.FromArgb("#2196f3"),
+                                    BarTextColor = Colors.WhiteSmoke
+                                };
+                            }
                         }
                         return -1;
                     }
@@ -139,13 +145,16 @@ namespace NICVC
                 }
                 catch (Exception)
                 {
-                    await App.Current.MainPage.DisplayAlert("Exception", "Something went wrong. Please try again!", "OK");
+                    if (App.Current.Windows.Count > 0 && App.Current.Windows[0]?.Page != null)
+                    {
+                        await App.Current.Windows[0].Page.DisplayAlert("Exception", "Something went wrong. Please try again!", "OK");
+                    }
                     return 500;
                 }
             }
             else
             {
-                //await App.Current.MainPage.DisplayAlert(App.AppName, App.NoInternet_, App.Btn_OK_);
+                //await App.Current.Windows[0].Page.DisplayAlert(App.AppName, App.NoInternet_, App.Btn_OK_);
                 return 101;
             }
         }
@@ -196,38 +205,43 @@ namespace NICVC
                     }
                     
                     userlogindatabase.AddUserLogin(item);
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    if (Application.Current.Windows.Count > 0)
                     {
-                        Application.Current.MainPage = new NavigationPage(new PreferencePage());
-                     
-                    }
-                    else
-                    {
-                        App.Current.MainPage = new NavigationPage(new PreferencePage())
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
-                            BarBackgroundColor = Color.FromArgb("#2196f3"),
-                            BarTextColor = Colors.WhiteSmoke
-                        };
+                            Application.Current.Windows[0].Page = new NavigationPage(new PreferencePage());
+                        }
+                        else
+                        {
+                            Application.Current.Windows[0].Page = new NavigationPage(new PreferencePage())
+                            {
+                                BarBackgroundColor = Color.FromArgb("#2196f3"),
+                                BarTextColor = Colors.WhiteSmoke
+                            };
+                        }
                     }
                     
-                    //await App.Current.MainPage.DisplayAlert(App.AppName, parsed["Message"].ToString(), App.Btn_OK_);
+                    //await App.Current.Windows[0].Page.DisplayAlert(App.AppName, parsed["Message"].ToString(), App.Btn_OK_);
                     /*if ((int)response.StatusCode != 200)
                     {
 
-                        await App.Current.MainPage.DisplayAlert(App.AppName, parsed["Message"].ToString(), App.Btn_OK_);
+                        await App.Current.Windows[0].Page.DisplayAlert(App.AppName, parsed["Message"].ToString(), App.Btn_OK_);
                     }*/
                     return (int)response.StatusCode;
 
                 }
                 catch (Exception)
                 {
-                    await App.Current.MainPage.DisplayAlert("Exception", "Something went wrong. Please try again!", "OK");
+                    if (App.Current.Windows.Count > 0 && App.Current.Windows[0]?.Page != null)
+                    {
+                        await App.Current.Windows[0].Page.DisplayAlert("Exception", "Something went wrong. Please try again!", "OK");
+                    }
                     return 500;
                 }
             }
             else
             {
-                //await App.Current.MainPage.DisplayAlert(App.AppName, App.NoInternet_, App.Btn_OK_);
+                //await App.Current.Windows[0].Page.DisplayAlert(App.AppName, App.NoInternet_, App.Btn_OK_);
                 return 101;
             }
         }

@@ -160,17 +160,20 @@ namespace NICVC
                 App.CurrentTabpageIndex = 2; // Set to Feedback tab (index 2)
                 
                 // Recreate MainPage with proper NavigationPage styling (matching App.xaml.cs)
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                if (Application.Current.Windows.Count > 0)
                 {
-                    Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage());
-                }
-                else
-                {
-                    Application.Current.MainPage = new NavigationPage(new NICVCTabbedPage())
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
-                        BarBackgroundColor = Color.FromArgb("#2196f3"),
-                        BarTextColor = Colors.WhiteSmoke
-                    };
+                        Application.Current.Windows[0].Page = new NavigationPage(new NICVCTabbedPage());
+                    }
+                    else
+                    {
+                        Application.Current.Windows[0].Page = new NavigationPage(new NICVCTabbedPage())
+                        {
+                            BarBackgroundColor = Color.FromArgb("#2196f3"),
+                            BarTextColor = Colors.WhiteSmoke
+                        };
+                    }
                 }
             }
         }

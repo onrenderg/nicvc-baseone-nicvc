@@ -397,7 +397,7 @@ namespace NICVC
                             status = parsed["Feedback"]["status"].ToString();
 
                             Loading_activity.IsVisible = false;
-                            await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("NICVC"), statusMessage, App.GetLabelByKey("close"));
+                            await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("NICVC"), statusMessage, App.GetLabelByKey("close"));
                             App.CurrentTabpageIndex = 2;
                             
                             // Navigate back to tabbed page instead of replacing MainPage
@@ -408,29 +408,29 @@ namespace NICVC
                 else
                 {
                     Loading_activity.IsVisible = false;
-                    await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("NICVC"), $"[{responce.StatusCode}]" + App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
+                    await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("NICVC"), $"[{responce.StatusCode}]" + App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
                     return;
                 }
                 Loading_activity.IsVisible = false;
             }
             catch (OperationCanceledException)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
             catch (TimeoutException)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
             catch (SocketException)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("SocketClosed"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("SocketClosed"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
             catch (Exception ey)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("Exception"), ey.Message, App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("Exception"), ey.Message, App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
         }
@@ -549,7 +549,7 @@ namespace NICVC
                 else
                 {
                     Loading_activity.IsVisible = false;
-                    await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("NICVC"), $"[{responce.StatusCode}]" + "Server Not Found", "Close");
+                    await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("NICVC"), $"[{responce.StatusCode}]" + "Server Not Found", "Close");
                     return;
                 }
                 Loading_activity.IsVisible = false;
@@ -557,22 +557,22 @@ namespace NICVC
             }
             catch (OperationCanceledException)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
             catch (TimeoutException)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("RequestTimeout"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
             catch (SocketException)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("SocketClosed"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("SocketClosed"), App.GetLabelByKey("noserver"), App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
             catch (Exception ey)
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("Exception"), ey.Message, App.GetLabelByKey("close"));
+                await Application.Current.Windows[0].Page.DisplayAlert(App.GetLabelByKey("Exception"), ey.Message, App.GetLabelByKey("close"));
                 Loading_activity.IsVisible = false;
             }
         }

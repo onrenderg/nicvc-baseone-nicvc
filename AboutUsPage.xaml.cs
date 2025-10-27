@@ -145,24 +145,30 @@ namespace NICVC
             {
                 try
                 {
-                    // Delete personal information from database
+                    // Delete all app data from database
+                    UserLoginDatabase userlogindatabase = new UserLoginDatabase();
+                    SaveUserPreferencesDatabase saveUserPreferencesDatabase = new SaveUserPreferencesDatabase();
                     PersonalInfoDatabase personalInfoDatabase = new PersonalInfoDatabase();
-                    personalInfoDatabase.customquery("DELETE FROM PersonalInfo");
                     
-                    await DisplayAlert("Success", "Profile deleted successfully.", "OK");
+                    userlogindatabase.DeleteUserLogin();
+                    saveUserPreferencesDatabase.DeleteSaveUserPreferences();
+                    personalInfoDatabase.DeletePersonalInfo();
                     
-                    // Force complete app refresh to properly reinitialize everything
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    // Navigate to login page
+                    if (Application.Current.Windows.Count > 0)
                     {
-                        Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"));
-                    }
-                    else
-                    {
-                        Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"))
+                        if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
-                            BarBackgroundColor = Color.FromArgb("#2196f3"),
-                            BarTextColor = Colors.WhiteSmoke
-                        };
+                            Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage("Logout"));
+                        }
+                        else
+                        {
+                            Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage("Logout"))
+                            {
+                                BarBackgroundColor = Color.FromArgb("#2196f3"),
+                                BarTextColor = Colors.WhiteSmoke
+                            };
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -219,17 +225,20 @@ namespace NICVC
                 await Auth_Revoke();
                 
                 // Reset to login page
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                if (Application.Current.Windows.Count > 0)
                 {
-                    Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"));
-                }
-                else
-                {
-                    Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"))
+                    if (DeviceInfo.Platform == DevicePlatform.iOS)
                     {
-                        BarBackgroundColor = Color.FromArgb("#2196f3"),
-                        BarTextColor = Colors.WhiteSmoke
-                    };
+                        Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage("Logout"));
+                    }
+                    else
+                    {
+                        Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage("Logout"))
+                        {
+                            BarBackgroundColor = Color.FromArgb("#2196f3"),
+                            BarTextColor = Colors.WhiteSmoke
+                        };
+                    }
                 }
             }
 
@@ -258,7 +267,10 @@ namespace NICVC
                 }
                 catch (Exception)
                 {
-                    await App.Current.MainPage.DisplayAlert("Exception", "Something went wrong. Please try again!", "OK");
+                    if (App.Current.Windows.Count > 0 && App.Current.Windows[0]?.Page != null)
+                    {
+                        await App.Current.Windows[0].Page.DisplayAlert("Exception", "Something went wrong. Please try again!", "OK");
+                    }
                     return 500;
                 }
             }
@@ -272,16 +284,19 @@ namespace NICVC
         void Btn_CloseThisHelp_Clicked(System.Object sender, System.EventArgs e)
         {
             Stack_Carousel.IsVisible = false;
-            if (DeviceInfo.Platform == DevicePlatform.iOS)
+            if (Application.Current.Windows.Count > 0)
             {
-                Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"));
-                return;
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage("Logout"));
+                    return;
+                }
+                Application.Current.Windows[0].Page = new NavigationPage(new ParichayPage("Logout"))
+                {
+                    BarBackgroundColor = Color.FromArgb("#2196f3"),
+                    BarTextColor = Colors.WhiteSmoke
+                };
             }
-            Application.Current.MainPage = new NavigationPage(new ParichayPage("Logout"))
-            {
-                BarBackgroundColor = Color.FromArgb("#2196f3"),
-                BarTextColor = Colors.WhiteSmoke
-            };
         }
     }
 }
